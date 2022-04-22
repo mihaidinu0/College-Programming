@@ -7,14 +7,15 @@
 *.d
 
 # Resurse Lab
-*.pdf
-*.pptx
-*.jpeg
-*.jpg
-*.docx
-*.doc
-*.png
-*.zip
+
+#*.pdf
+#*.pptx
+#*.jpeg
+#*.jpg
+#*.docx
+#*.doc
+#*.png
+#*.zip
 
 
 # Object files
