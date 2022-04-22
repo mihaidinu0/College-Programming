@@ -1,0 +1,45 @@
+Algoritm din viata de zi cu zi
+===================================
+
+Omleta
+========
+
+Deschide frigider;
+
+Daca (oua < 2){
+	Mergi la Kaufland;
+	ia oua;
+	Intoarce-te}
+Altfel{
+	ia oua din frigider;}
+
+ia tigaie;
+Daca (tigaie == murdara){
+	deschide dulap;
+	ia detergent;
+	ia burete;
+	while (tigaie == murdara){
+		freaca tigaie;
+	}}
+
+aprinde plita;
+pune tigaie pe plita;
+sparge oua;
+Daca (oul cade pe jos){
+	Deschide frigider;
+	Ia un ou;
+	Inchide frigide;
+}
+Arunca oua in tigaie;
+Prajeste oua;
+Asteapta 2 minute;
+Intoarce oua;
+Atat timp cat (oua =/= gata){
+	Asteapta 30 de secunde;
+}
+Opreste plita;
+Deschide dulap;
+Ia farfurie;
+Pune farfuria pe masa.
+Pune ouale in farfurie.
+Enjoy.
