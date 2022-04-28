@@ -1,0 +1,58 @@
+\documentclass{article}
+%babel
+\usepackage[romanian]{babel}
+%
+\usepackage{amssymb}%pentru a folosi simboluri speciale in mod mat, \mathbb{•}
+%\usepackage{amsmath}
+%titlu
+\title{Exemple C7}
+\author{Student\footnote{anul IAC}}
+%
+%\sloppy% se folosește pentru a "relaxa" distanța dintre cuvinte pe rând
+\begin{document}
+\maketitle
+\begin{abstract}
+Se studiază: contori și cadre de tip teoremă: \verb+newtheorem+.  
+\end{abstract}
+\section{Contori}\label{cont}
+\subsection{Cum gestionează \LaTeX\ contorii?}\label{intern}
+În secțiunea \ref{cont} de la pagina \pageref{cont}, se deschide subsecțiunea \ref{intern}. Valoarea curentă a contorului \verb+subsection+ este \thesubsection.
+\subsection{Ce facem noi?}\label{utilizator}
+Contorul subsecțiunii \ref{utilizator} conservă contorul \ref{cont} al secțiunii principale. Valoarea Valoarea curentă a contorului \verb+subsection+ a devenit \thesubsection. \par
+Ca urmare:
+\begin{enumerate}
+\item referim contorii entităților etichetate cu \verb+\label{•}+ cu \verb+\ref{•}+.
+\item vizualizăm valorile curente ale contorilor cu \verb+\thectr+; exemplu: valoarea contorului \verb+enumi+ al item-ului curent este \theenumi.
+\item adunăm o valoare la un contor; exemplu: cu \verb+\addtocounter{section}{1}+ valoarea contorului \verb+section+ devine \addtocounter{section}{1} \thesection.
+\item setăm la o valoare un contor cu \verb+\setcounter{ctr}{num}+; exemplu: setăm la 4 valoarea curentă a \verb+section+ \setcounter{section}{4}, cu efectul \thesection; observați numărul  secțiunii următoare.
+\item putem defini și noi contori, vom vedea imediat un exemplu.
+\item putem folosi valoarea unui contor într-o expresie, cu \verb+\value{ctr}+.
+\item putem schimba stilul numerotării; exemplu: cu \verb+\renewcommand{\theenumi}{\roman{enumi}}+, 
+\renewcommand{\theenumi}{\roman{enumi}} itemul curent se numerotează  \theenumi.
+\end{enumerate} 
+\section{Unități de măsura pentru lungimi}
+A se vedea C7.
+\section{Cadre de tip teoremă}
+Comenzile sunt:\par
+ \verb+\newtheorem{env_name}{caption}[within]+ sau \par
+ \verb+\newtheorem{env_name}[numbered_like]{caption}+. \par
+Folosim contorul nou \verb+teor1+ în cadrul cu numele \verb+teor1+.
+\newtheorem{teor1}{Teorema}
+\newtheorem{teor2}[teor1]{Axioma}
+\begin{teor1}
+ Unele teoreme sunt numerotate.
+\end{teor1}
+Contorul \verb+teor2+ al cadrului \verb+teor2+ este numerotat ca \verb+teor1+ datorită argumentului \verb+[teor1]+ din comanda \verb+\newtheorem{teor2}[teor1]{Axioma}+, deci se va incrementa la comanda \verb+\begin{teor2}+ imediat după \verb+\end{teor1}+.
+\begin{teor2}
+Toți oamenii sunt muritori.
+\end{teor2}
+Folosim un nou contor \verb+teor3+ într-un nou cadru \verb+teor3+. Comanda \verb+\mathbb{R}+ ce afișează, în mod matematic, $\mathbb{R}$, necesită în preambul \verb+\usepackage{amsymb}+.
+\newtheorem{teor3}{Teorema}
+\begin{teor3}[Poincar\'{e}-Liapunov] Dacă valorile proprii ale operatorului liniar  $A:\mathbb{R}^n \rightarrow \mathbb{R} ^n$ au partea reală negativă, atunci poziția de echilibru $x=0$ a sistemului diferențial $\dot{x}=Ax$  este asimptotic stabilă.
+\end{teor3}
+Iată o definiție al cărei contor \verb+defin+ este interior lui \verb+section+.
+\newtheorem{defin}{Definiție}[section]
+\begin{defin} 
+Valorile proprii ale unei matrice $A$ sunt rădăcinile polinomului caracteristic $P(\lambda)=\det(\lambda I -A)$.
+\end{defin}
+\end{document}

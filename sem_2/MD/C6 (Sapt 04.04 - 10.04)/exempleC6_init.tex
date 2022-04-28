@@ -1,0 +1,92 @@
+\documentclass{article}
+%babel
+\usepackage[romanian]{babel}
+%
+\usepackage{graphicx}%doar dacă dorim să importăm grafică
+%
+%titlu
+\title{Exemple C6}
+\author{Student\footnote{Grupa:}}
+\begin{document}
+%afișare titlu, cuprins, listă figuri
+\maketitle
+\tableofcontents%afișarea cuprinsului
+\listoffigures%afișarea listei figurilor
+\begin{abstract}%rezumat
+Se studiază: grafică în \LaTeX\ , cadrele pentru citate \verb+quote+, \verb+quotation+, crearea de liste cu \verb+itemize+, \verb+enumerate+, \verb+description+ și crearea manuală de bibliografie numerotată.  
+\end{abstract}
+\section{Cadre pentru realizarea de grafică}
+Un text urmat de grafică în \LaTeX\, realizată cu \verb+picture+.
+%
+\begin{figure}[htpb]
+\centering
+\begin{picture}(50,50)
+\setlength{\unitlength}{1pt}%seteaza unitatea de lungime la valoarea 1 pt
+\put(25,0){\dashbox{.5}(25,25)[b]{TEXT}}
+%obiectul dashbox (25x25)e plasat in punctul de coordonate (25,0)
+\end{picture}
+\caption{Un box cu text jos.}
+\end{figure}
+%
+\begin{figure}[htpb]
+\centering
+\begin{picture}(50,50)
+\setlength{\unitlength}{1pt}
+\put(25,5){\vector(1,2){20}}
+\put(25,2.6){\line(3,-1){20}}
+\end{picture}
+\caption{Linie și vector.}
+\end{figure}
+%
+\begin{figure}[htpb]
+\centering
+\begin{picture}(50,50)
+\setlength{\unitlength}{1pt}
+\put(20,0){\circle{20}}
+\put(20,0){\vector(0,1){10}}
+\put(40,0){\circle*{10}}
+\end{picture}
+\caption{Cerc cu rază și disc.}
+\end{figure}
+%
+\section{Cadre pentru evidențierea citatelor}
+Text introductiv urmat de cadrele \verb+quote+ și \verb+quotation+.
+\begin{quotation}
+Prima lege a lui Kirchhoff (sau legea nodurilor) este o expresie a conservării sarcinii electrice.\par
+Suma algebrică a intensităților curenților electrici care se întâlnesc într-un nod de rețea este egală cu zero.
+\end{quotation}
+A doua lege a lui Kirchhoff poate fi formulată astfel:
+\begin{quote}
+Suma algebrică a tensiunilor (electromotoare și pe elemente rezistive) dintr-un ochi de rețea este egală cu 0. 
+\end{quote}
+\section{Cadre pentru crearea de liste}
+Text  cu  urmat de o listă compusă cu \verb+itemize+ și \verb+enumerate+.
+\begin{itemize}
+\item Fiecare element din listă are un bullet.
+\item Listele pot fi încuibate.
+\begin{enumerate}
+\item Etichetele într-o listă numerotată sunt numere sau litere.\label{et}
+\item O listă are cel puțin două elemente:\label{elem}
+\begin{enumerate}
+\item un prim element
+\item un al doilea element\label{elel}
+\end{enumerate}
+\item \LaTeX\ permite patru niveluri de încuibare.
+\end{enumerate}
+\end{itemize}
+\par
+Regulile de etichetare sunt descrise în elementul \ref{et}, iar elementul \ref{elem} are sub-elementul \ref{elel} afișat la pagina \pageref{elel}.\par 
+O listă creată cu \verb+description+ arată astfel:
+\begin{description}
+\item[Curs:] teorie și concepte de bază
+\item[Proiect:] dezvoltarea unei aplicații
+\item[Laborator:] exerciții
+\end{description}
+\section{Cadre și comenzi pentru generarea manuală a bibliografiei}
+Urmează referințele bibliografice în forma numerotată.\par
+La cursul de matematică se folosește lucrarea \cite{mat}, iar la bazele electrotehnicii se studiază legile descrise în \cite{elth}.
+\begin{thebibliography}{a}
+\bibitem{mat} I.Ionescu, Analiză matematică, Editura ALL, 2015.
+\bibitem{elth} I. Daniel, Bazele electrotehnicii, Editura Politehnica Press, 2019.
+\end{thebibliography}
+\end{document}
