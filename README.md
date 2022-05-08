@@ -1,3 +1,3 @@
-# Programare-UPB
+# College Programming
 
-Proiecte, Teme și Laboratoare legate de Programare pentru Facultate.
+Projects and Lab Homeworks related to programming.
