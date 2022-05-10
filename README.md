@@ -1,7 +1,6 @@
-# Programare-UPB
+# College Programming
 
-Proiecte, Teme și Laboratoare legate de Programare pentru Facultate.
-
+Projects and Lab Homeworks related to programming.
 
 ## To-Do
-- [ ] Adauga exercitii in C/C++ si Python pentru cand nu ai internet
+- [ ] Move Latex Homeworks into separate repository.
