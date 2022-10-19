@@ -1,0 +1,1 @@
+sir[i] = nr_crt;
