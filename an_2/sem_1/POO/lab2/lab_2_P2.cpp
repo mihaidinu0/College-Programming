@@ -16,6 +16,7 @@ using namespace std;
 
 class Car{
 public:
+    // Constructori
     Car(string br, string typ, int y, int speed, int sts);
     Car(string br, string typ, int y);
     Car(string br, int sts, string typ);
@@ -23,15 +24,12 @@ public:
     Car(string br);
     Car();
 
-    void show(){
-        cout << "###########" << endl;
-        cout << "Marca: " << brand << endl;
-        cout << "Model: " << model << endl;
-        cout << "An: " << release_year << endl;
-        cout << "Viteza maxima: " << max_speed << endl;
-        cout << "Numar locuri: " << seats << endl;
-        cout << "###########" << endl << endl;
-    }
+    // Destructor
+    ~Car();
+
+    // Functie de Afisare
+    void show();
+
 
     string brand;
     string model;
@@ -40,6 +38,8 @@ public:
     int seats;
 };
 
+
+// Definire Constructori Multipli
 Car::Car(string br, string typ, int y, int speed, int sts){
     brand = br;
     model = typ;
@@ -86,6 +86,22 @@ Car::Car(){
     release_year = 0;
     max_speed = 0;
     seats = 0;
+    }
+
+// Definire Destructor
+Car::~Car(){
+    cout << "Frumos cazan, ati primit un voucher RABLA in valoare de: NULL\n";
+}
+
+// Definire Metoda Afisare
+    void Car::show(void){
+        cout << "###########" << endl;
+        cout << "Marca: " << brand << endl;
+        cout << "Model: " << model << endl;
+        cout << "An: " << release_year << endl;
+        cout << "Viteza maxima: " << max_speed << endl;
+        cout << "Numar locuri: " << seats << endl;
+        cout << "###########" << endl << endl;
     }
 
 int main()
