@@ -15,16 +15,66 @@ using namespace std;
 
 class Sibling{
 public:
-    string nume;
-    string prenume;
-    int varsta;
+    string * nume;
+    string * prenume;
+    int * varsta;
+
+
+    // Default Constructor
+    Sibling();
+    // Constructor
+    Sibling(string name, string prenume, int varsta);
+    // Copy Constructor
+    // Sibling(const clasa&);
+    // Destructor
+    ~Sibling();
 
 };
 
+
+// Metode Sibling
+Sibling::Sibling(void){
+    nume = new string;
+    *nume = "N/A";
+    prenume = new string;
+    *prenume = "N/A";
+    varsta = new int;
+    *varsta = 0;
+}
+
+Sibling::Sibling(string nume_fam, string nume_pers, int v){
+    nume = new string;
+    nume = &nume_fam;
+    prenume = new string;
+    prenume = &nume_pers;
+    varsta = new int;
+    varsta = &v;
+}
+
+// Sibling::Sibling(const clasa&){
+//     nume = new string;
+//     nume = clasa.nume;
+//     prenume = new string;
+//     prenume = ;
+//     varsta = new int;
+//     varsta = &v;
+// }
+
+Sibling::~Sibling(){
+
+}
+
+
 int main(){
     
-    Sibling sibling1;
-    Sibling sibling2 = sibling1;
+    Sibling ion("Popescu", "Ion", 37);
+    cout << *ion.nume << endl;
+    cout << *ion.prenume << endl;
+    cout << *ion.varsta << endl;
+
+    Sibling emil();
+    emil.
+    
     
     return 0;
 }

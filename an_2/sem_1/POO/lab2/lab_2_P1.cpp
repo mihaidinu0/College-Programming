@@ -12,8 +12,10 @@ using namespace std;
 class Timp {
     public:
         Timp(){
-            time_t timp = time(NULL);
-            cout << ctime(&timp);
+            time_t timp = time(0);
+            cout << ctime(&timp) << endl;
+            cout << timp;
+
         }
         ~Timp(){
             cout << "In cautarea timpului pierdut...";
