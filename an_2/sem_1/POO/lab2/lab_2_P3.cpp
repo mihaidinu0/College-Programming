@@ -25,7 +25,7 @@ public:
     // Constructor
     Sibling(string name, string prenume, int varsta);
     // Copy Constructor
-    // Sibling(const clasa&);
+    Sibling(const Sibling& clasa);
     // Destructor
     ~Sibling();
 
@@ -33,7 +33,7 @@ public:
 
 
 // Metode Sibling
-Sibling::Sibling(void){
+Sibling::Sibling(){
     nume = new string;
     *nume = "N/A";
     prenume = new string;
@@ -51,17 +51,17 @@ Sibling::Sibling(string nume_fam, string nume_pers, int v){
     varsta = &v;
 }
 
-// Sibling::Sibling(const clasa&){
-//     nume = new string;
-//     nume = clasa.nume;
-//     prenume = new string;
-//     prenume = ;
-//     varsta = new int;
-//     varsta = &v;
-// }
+Sibling::Sibling(const Sibling& clasa){
+    nume = new string;
+    nume = clasa.nume;
+    prenume = new string;
+    prenume = clasa.prenume;
+    varsta = new int;
+    varsta = clasa.varsta;
+}
 
 Sibling::~Sibling(){
-
+    
 }
 
 
