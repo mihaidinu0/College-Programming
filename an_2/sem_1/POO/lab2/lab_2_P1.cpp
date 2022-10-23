@@ -14,8 +14,6 @@ class Timp {
         Timp(){
             time_t timp = time(0);
             cout << ctime(&timp) << endl;
-            cout << timp;
-
         }
         ~Timp(){
             cout << "In cautarea timpului pierdut...";
