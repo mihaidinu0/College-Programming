@@ -10,71 +10,67 @@ atributele fiecărui obiect. 2p
 */
 
 #include <iostream>
-#include <string>
+#include <cstring>
 using namespace std;
 
 class Sibling{
-public:
-    string * nume;
-    string * prenume;
-    int * varsta;
+    public:
+        char *prenume;
+        char *nume;
+        int varsta;
 
+        // Constructor
+        Sibling(const char *p = NULL, const char *n = NULL, int a = 0);
 
-    // Default Constructor
-    Sibling();
-    // Constructor
-    Sibling(string name, string prenume, int varsta);
-    // Copy Constructor
-    // Sibling(const clasa&);
-    // Destructor
-    ~Sibling();
+        // Destructor
+        ~Sibling(){
+            delete [] prenume;
+            delete [] nume;
+            cout<<"Murder in progress.."<<endl;
+        }
 
+        // Copy Constructor
+        Sibling(const Sibling&);
+        void update(const char *,int);
 };
 
-
-// Metode Sibling
-Sibling::Sibling(void){
-    nume = new string;
-    *nume = "N/A";
-    prenume = new string;
-    *prenume = "N/A";
-    varsta = new int;
-    *varsta = 0;
+Sibling::Sibling(const char *p, const char *n,int a){
+    prenume = new char[strlen(p)+1];
+    nume = new char[strlen(n)+1];
+    strcpy(prenume, p);
+    strcpy(nume, n);
+    varsta = a;
 }
 
-Sibling::Sibling(string nume_fam, string nume_pers, int v){
-    nume = new string;
-    nume = &nume_fam;
-    prenume = new string;
-    prenume = &nume_pers;
-    varsta = new int;
-    varsta = &v;
+Sibling::Sibling(const Sibling& clasa){
+    varsta = clasa.varsta;
+    nume = new char[strlen(clasa.nume)+1];
+    prenume = new char[strlen(clasa.prenume)+1];
+    strcpy(nume, clasa.nume);
+    strcpy(prenume, clasa.prenume);
 }
 
-// Sibling::Sibling(const clasa&){
-//     nume = new string;
-//     nume = clasa.nume;
-//     prenume = new string;
-//     prenume = ;
-//     varsta = new int;
-//     varsta = &v;
-// }
-
-Sibling::~Sibling(){
-
-}
-
+void Sibling::update(const char *p, int a){
+    varsta = a;
+    delete [] prenume;
+    prenume = new char[strlen(p)+1];
+    strcpy(prenume, p);}
 
 int main(){
-    
-    Sibling ion("Popescu", "Ion", 37);
-    cout << *ion.nume << endl;
-    cout << *ion.prenume << endl;
-    cout << *ion.varsta << endl;
+    Sibling sibling1("Ion", "Popescu", 35);
+    Sibling sibling2 = sibling1;
 
-    Sibling emil();
-    emil.
-    
-    
+    cout<<"Inainte de update: "<<endl;
+    cout << sibling1.prenume << " " << sibling1.nume << " " << sibling1.varsta << endl;
+    cout << sibling2.prenume << " " << sibling2.nume << " " << sibling2.varsta << endl;
+
+    sibling2.update("Alexia", 27);
+
+    cout<<endl<<"Dupa update:"<<endl;
+    cout << sibling1.prenume << " " << sibling1.nume << " " << sibling1.varsta << endl;
+    cout << sibling2.prenume << " " << sibling2.nume << " " << sibling2.varsta << endl;
+
+    cout << endl;
+
     return 0;
 }
