@@ -98,7 +98,6 @@ class Beer_A : private Beer{
         void setLength(int l);
         void setLength(float l);
 
-        int getLength();
         float getLength();
 
 };
@@ -134,6 +133,22 @@ Beer_A::Beer_A(float l){
     this->setLength(l); 
 }
 
+void Beer_A::setLength(int l){
+    this->length = l;
+}
+
+void Beer_A::setLength(float l){
+    this->length = l;
+}
+
+float Beer_A::getLength(){
+    return this->length;
+}
+
+//////////////////////////////////////
+//////////////////////////////////////
+//////////////////////////////////////
+//////////////////////////////////////
 
 // Tipul B: etichetă rotundă și transparentă (private radius)
 class Beer_B : private Beer{
@@ -150,6 +165,8 @@ class Beer_B : private Beer{
         // Method overloading pentru INT si FLOAT
         void setRadius(int r);
         void setRadius(float r);
+
+        float getLabelArea();
 
 };
 
@@ -193,6 +210,15 @@ void Beer_B::setRadius(float r){
     this->radius = r;
 }
 
+float Beer_B::getLabelArea(){
+    return (this->radius*this->radius*3.14159);
+}
+
+//////////////////////////////////////
+//////////////////////////////////////
+//////////////////////////////////////
+//////////////////////////////////////
+
 // Tipul C: în formă de triunghi dreptunghic (private base și height)
 class Beer_C : private Beer{
     private:
@@ -207,7 +233,7 @@ class Beer_C : private Beer{
         Beer_C(string t, string o, float b, float h);
         Beer_C(int b, int h);
         Beer_C(float b, float h);
-        
+
         // Method overloading pentru INT si FLOAT 
         float getLabelArea(int b, int h);
         float getLabelArea(float b, float h);
@@ -281,10 +307,12 @@ void Beer_C::setBase(float b){
     this->base = b;
 }
 
+//////////////////////////////////////
+//////////////////////////////////////
+//////////////////////////////////////
+//////////////////////////////////////
 
 int main(){
-
-    
 
     return 0;
 }
