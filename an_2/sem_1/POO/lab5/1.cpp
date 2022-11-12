@@ -27,7 +27,7 @@ class Volume{
             return (pow(l, 3));
         }
         float getVolume(int r){
-            return (pow(3.14159, 3)*3/4);
+            return (pow(r, 3)*3.14159*3/4);
         }
 
 
