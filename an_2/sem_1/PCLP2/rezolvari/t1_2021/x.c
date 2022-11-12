@@ -1,5 +1,5 @@
+#include <stdlib.h>
 #include <stdio.h>
-
 
 int digit_count(int n){
 	int dig = 0;
@@ -12,24 +12,24 @@ int digit_count(int n){
 	return dig;
 }
 
-int cmp(int *vector){
+void cmp(int vector[], int *i_max, int *digit_max){
 
 	int digits[10];
 	int i;
-	int i_max = -9999;
-	int max = -99999;
+	int max = vector[0];
 
 	for (i = 0; i < 10; i++){
 		digits[i] = digit_count(vector[i]);
+		printf("\n%d", vector[i]);
 		if (vector[i] > max){
 			max = vector[i];
-			i_max = i;
+			*i_max = i;
+			printf("\n aaa %d", *i_max);
 		}
 	}
 
-	int results[2] = {i_max, digits[i_max]};
-	return results;
-	//printf("%d %d", i_max, digits[i_max]);
+	*digit_max = vector[*i_max];
+
 }
 
 
@@ -37,11 +37,14 @@ int cmp(int *vector){
 int main()
 {
 
-	int vector[] = {1, 3, 4564, 234, 5353, 23, 1};
 
-	int rezultate[2];
-	rezultate = cmp(vector);
-	printf("%d\t%d", rezultate[0], rezultate[1]);
+	int vector[] = {10, 3, 5, 234, 5353, 23, 1};
+	int i_mx;
+	int dig_max;
+	cmp(&vector, &i_mx, &dig_max);
+
+	printf("Pozitia %d valoarea %d", i_mx, dig_max);
+
 
 	return 0;
 }
