@@ -6,108 +6,123 @@ Realizați un exemplu legat de cărți în care să implementați:
 */
 
 #include <iostream>
-#include <string>
+#include <string.h>
+#include <vector>
 using namespace std;
 
 
-class Serie{
-	private:
-		string autor;
-		int nr_carti;
-	public:
-		friend class Carte;
-		// Chiar daca clasa ManualProgramare nu e friend
-		// functiile friend de mai jos au acces
-		friend string getAutor();
-		friend string getAutor(Serie &s); 
-		friend string getTema();
-
-		Serie(string aut, int nr){
-			this->autor = aut;
-			this->nr_carti = nr;
-		}
-
-		string getAutor(Carte &c){
-			return c.autor;
-		}
-		string getAutor(Serie &s){
-			return s.autor;
-		}
-		string getAutor(){
-			return this->autor;
-		}
-		
-		int getNrCarti(Serie &s){
-			return s.nr_carti;
-		}
-
-		int getNrCarti(){
-			return this->nr_carti;
-		}
-
-
-};
-
 class Carte{
-	public:
-		string autor;
-		string tema;
-		int nr_pagini;
-		virtual string getAutor(){
-			return this->autor;
-		}
-		virtual string getTema(){
-			return this->tema;
-		}
+    protected:
+        string titlu;
+        string autor;
+        string rezumat;
+        string ISBN;
+    public:
 
-		virtual string getAutor(Carte &c){
-			return c.autor;
-		}
-		virtual string getAutor(Serie &s){
-			return s.autor;
-		}
+        friend string getTitlu(Carte *c);
+        friend class Bibliotecar;
+        // friend string getTitlu(Carte *c);
+        // friend string getAutor(Carte *c);
+        // friend string getRezumat(Carte *c);
+        // friend string getISBN(Carte *c);
 
+        Carte(string t, string a, string r, string i){
+            this->titlu = t;
+            this->autor = a;
+            this->rezumat = r;
+            this->ISBN = i;
+        }
 
-};
-
-class ManualProgramare : private Carte{
-	private:
-
-	public:
-		string getAutor(){
-			return this->autor;;
-		}
-		string getTema(){
-			return this->tema;
-		}
-
-		string getAutor(Carte &c){
-			return c.autor;
-		}
-		string getAutor(Serie &s){
-			return s.autor;
-		}
-		string getAutor(){
-			return this->autor;
-		}
+        string gTitlu(){
+            return this->titlu;
+        }
+        string gAutor(){
+            return this->autor;
+        }
+        string gRezumat(){
+            return this->autor;
+        }
+        string gISBN(){
+            return this->ISBN;
+        }
 
 };
 
+// Clasa Abstracta Angajat (Al unei Biblioteci)
+class Angajat{
+    private:
+        int salariu;
+        int varsta;
+        int nr_contract_munca;
 
-class Capitol{
-	private:
-		int nr_pagini;
-		string rezumat;
-	public:
+    public:
+        virtual int getSalariu() = 0;
+
+        virtual int getVarsta() = 0;
+
+        virtual int getCIM() = 0;
+
+        virtual string getTitlu(Carte car) = 0;
+        virtual string getAutor(Carte car) = 0;
+        virtual string getRezumat(Carte car) = 0;
+        virtual string getISBN(Carte car) = 0;
 
 };
 
+// Clasa concreta derivata din Angajat
+class Bibliotecar : public Angajat{
+    private:
+        int salariu;
+        int varsta;
+        int nr_contract_munca;
 
+    public:
+
+        Bibliotecar(){
+            cout << "Bibliotecar generat!" << endl;
+        }
+
+        int getSalariu(){
+            return this->salariu;
+        }
+
+        int getVarsta(){
+            return this->varsta;
+        }
+
+        int getCIM(){
+            return this->nr_contract_munca;
+        }
+
+        string getTitlu(Carte car){
+            return car.titlu;
+        }
+        string getAutor(Carte car){
+            return car.autor;
+        }
+        string getRezumat(Carte car){
+            return car.rezumat;
+        }
+        string getISBN(Carte car){
+            return car.ISBN;
+        }
+};
+
+string getTitlu(Carte *c){
+    return c->titlu;
+}
 
 int main(){
-	cout << "plm" << endl;
+
+    Carte abecedar("abecedar", "Mariana Popescu", "Universul literelor colorate!", "3445-2324-3424-3425");
+    Bibliotecar marin;
+
+    //Test Friend Class si Virtual Function
+    cout << "Bibliotecarul returneaza: " << marin.getTitlu(abecedar) << endl;
 
 
+    //Test Friend Function
+    cout << "Functia returneaza: " << getTitlu(&abecedar) << endl;
 
-	return 0;
+    return 0;
 }
