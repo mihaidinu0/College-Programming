@@ -16,15 +16,9 @@ public:
 	int population;
 	string capital;
 
-	virtual void imn(){
-		cout << "Desteapta-te, cetatean al lumii libere!";
-	}
-	virtual int getPopulation(){
-		return this-> population;
-	}
-	virtual string getCapital(){
-		return this-> capital;
-	}
+	virtual void imn() = 0;
+	virtual int getPopulation() = 0;
+	virtual string getCapital() = 0;
 
 };
 
