@@ -1,4 +1,6 @@
-        // friend string getTitlu(Carte *c);
-        // friend string getAutor(Carte *c);
-        // friend string getRezumat(Carte *c);
-        // friend string getISBN(Carte *c);
+        // Carte(string t, string a, string r, string i){
+        //     this->titlu = t;
+        //     this->autor = a;
+        //     this->rezumat = r;
+        //     this->ISBN = i;
+        // }

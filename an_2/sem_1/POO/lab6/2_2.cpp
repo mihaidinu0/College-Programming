@@ -10,12 +10,43 @@ Realizați un exemplu legat de cărți în care să implementați:
 #include <vector>
 using namespace std;
 
-/*
-Abstract - Carte
-Carte -> Nuvela, Manual, etc.
-Cum inglobez subclasele fara sa fac overloading pe fiecare tip?
-Folosesti superclase abstracte numai daca nu intentionezi sa le folosesti.
-*/
+
+class Carte{
+    protected:
+        string titlu;
+        string autor;
+        string rezumat;
+        string ISBN;
+    public:
+
+        friend string getTitlu(Carte *c);
+        friend class Bibliotecar;
+        // friend string getTitlu(Carte *c);
+        // friend string getAutor(Carte *c);
+        // friend string getRezumat(Carte *c);
+        // friend string getISBN(Carte *c);
+
+        Carte(string t, string a, string r, string i){
+            this->titlu = t;
+            this->autor = a;
+            this->rezumat = r;
+            this->ISBN = i;
+        }
+
+        string gTitlu(){
+            return this->titlu;
+        }
+        string gAutor(){
+            return this->autor;
+        }
+        string gRezumat(){
+            return this->autor;
+        }
+        string gISBN(){
+            return this->ISBN;
+        }
+
+};
 
 // Clasa Abstracta Angajat (Al unei Biblioteci)
 class Angajat{
@@ -31,6 +62,11 @@ class Angajat{
 
         virtual int getCIM() = 0;
 
+        virtual string getTitlu(Carte car) = 0;
+        virtual string getAutor(Carte car) = 0;
+        virtual string getRezumat(Carte car) = 0;
+        virtual string getISBN(Carte car) = 0;
+
 };
 
 // Clasa concreta derivata din Angajat
@@ -41,8 +77,6 @@ class Bibliotecar : public Angajat{
         int nr_contract_munca;
 
     public:
-
-        friend Carte;
 
         Bibliotecar(){
             cout << "Bibliotecar generat!" << endl;
@@ -74,69 +108,21 @@ class Bibliotecar : public Angajat{
         }
 };
 
-class Carte{
-    protected:
-        string titlu;
-        string autor;
-        string rezumat;
-        string ISBN;
-    public:
-
-        friend string getTitlu(Carte *c);
-        friend class Bibliotecar;
-        // friend string getTitlu(Carte *c);
-        // friend string getAutor(Carte *c);
-        // friend string getRezumat(Carte *c);
-        // friend string getISBN(Carte *c);
-
-        Carte(string t, string a, string r, string i){
-            this->titlu = t;
-            this->autor = a;
-            this->rezumat = r;
-            this->ISBN = i;
-        }
-
-        string getTitlu(){
-            return this->titlu;
-        }
-        string getAutor(){
-            return this->autor;
-        }
-        string getRezumat(){
-            return this->autor;
-        }
-        string getISBN(){
-            return this->ISBN;
-        }
-
-};
-
-class Nuvela : public Carte{
-    private:
-        string serie;
-        string protagonist;
-    public:
-        
-
-
-};
-
-class Manual : public Carte{
-    private:
-        string subiect;
-        vector<string> cuvinte_cheie;
-        
-    public:
-};
-
-
 string getTitlu(Carte *c){
     return c->titlu;
 }
 
 int main(){
 
+    Carte abecedar("abecedar", "Mariana Popescu", "Universul literelor colorate!", "3445-2324-3424-3425");
+    Bibliotecar marin;
 
+    //Test Friend Class si Virtual Function
+    cout << "Bibliotecarul returneaza: " << marin.getTitlu(abecedar) << endl;
+
+
+    //Test Friend Function
+    cout << "Functia returneaza: " << getTitlu(&abecedar) << endl;
 
     return 0;
 }
